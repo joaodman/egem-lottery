@@ -87,10 +87,12 @@ contract Lottery is Destructible {
 	//Add address to the ticket holders array. Adjust holders array size as needed
     function insertHolder (address _holder) private {
         if(ticketsIssued == holders.length) {
-            holders.length.add(1);
+            holders.push(_holder);
         }
-        holders[ticketsIssued] = _holder;
-        ticketsIssued.add(1);
+	else {
+	    holders[ticketsIssued] = _holder;
+        }
+	ticketsIssued = ticketsIssued.add(1);
     }
 
     // Award users tickets
